@@ -1,122 +1,165 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-const Fondo = () => {
-  const mountRef = useRef(null); // Referencia para el contenedor del canvas
+const SpaceScene = () => {
+  const mountRef = useRef(null);
 
   useEffect(() => {
-    let scene, camera, renderer, cube, arrParticles ; // Declara variables fuera para poder limpiarlas
+    let scene, camera, renderer, stars, meteorites, galaxy;
 
     const init = () => {
-      // Función para inicializar la escena
+      // Debemos iniciar la escena
       scene = new THREE.Scene();
-      //parametro 1 es el angulo de vision, tamaño, 1 es que tan cerca se va a renderizar lo que esta dentro
-      //del rango de vision y 1000 que tan lejos va a estar los objetos para renderizarse
-      camera = new THREE.PerspectiveCamera(75,window.innerWidth / window.innerHeight,1,1000);
-      //tipo de renderizado 
+
+      // ahora la camara
+      ////angulo de vision, tamaño, minimos, 1 y 2000 es que tan lejos puede estar de la camara
+      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight,1,2000);
+      camera.position.z = 100;
+
+      // Elegimos un render ya que hay 3 
       renderer = new THREE.WebGLRenderer();
-      //tamaño de renderizado
+      //le pasamos el tamaño
       renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setClearColor(0x333333, 1);
+
+      //creamos un render de color negro para simular el espacio
+      renderer.setClearColor(0x000000, 1); 
+      // debemos escoger el elemento Dom 
       mountRef.current.appendChild(renderer.domElement);
-      const ligth = new THREE.DirectionalLight(0xffffff,0.5)
-      ligth.position.set(-1, 3, 1)
-      scene.add(ligth)
-      //esto es para ver donde esta la luz
-      // const helper = new THREE.DirectionalLightHelper(ligth,5)
-      // scene.add(helper)
-      // generacion del cubo
-      // const geometry = new THREE.BoxGeometry(1, 1, 1);
-      // const material = new THREE.MeshBasicMaterial({ color: 0x0099ff });
-      // cube = new THREE.Mesh(geometry, material);
 
-      // scene.add(cube);
+      // para generar la luz podemos usar el helper para saber donde esta la camara y asi es mas facil posiconarla
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+      scene.add(ambientLight);
 
+      // Creamos las estrellas
+      createStars();
 
-      //generacion de las particulas
-      arrParticles=[];
+      // cremos los meteoritos
+      createMeteorites();
 
-      const loader=new THREE.TextureLoader();
+      // creamos la galaxia
+      createGalaxy();
+    };
 
-      loader.crossOrigin= ""
-      
-      loader.load('../../public/img/par2t.png', (texture)=>{
-        console.log('holi')
-        if (!scene) return;
-        console.log('holix2')
-        //crear un plano geometrico de 300x300
-        const particleGeo = new THREE.PlaneGeometry(30,30)
+    const createStars = () => {
+      stars = [];
+      const starGeometry = new THREE.SphereGeometry(0.1, 8, 8);
+      const starMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
 
-        //2. el material
-        const particleMaterial = new THREE.MeshLambertMaterial({
-          map:texture,
-          transparent:true,
-        })
+      for (let i = 0; i < 1000; i++) {
+        const star = new THREE.Mesh(starGeometry, starMaterial);
+        star.position.set(
+          Math.random() * 2000 - 1000,
+          Math.random() * 2000 - 1000,
+          Math.random() * 2000 - 1000
+        );
+        scene.add(star);
+        stars.push(star);
+      }
+    };
 
-        const NUMB_OF_PARTICLES = 300;
+    const createMeteorites = () => {
+      meteorites = [];
+      const meteoriteGeometry = new THREE.SphereGeometry(1, 8, 8);
+      const meteoriteMaterial = new THREE.MeshStandardMaterial({
+        color: 0xaaaaaa,
+      });
 
-        for (let p = 0; p < NUMB_OF_PARTICLES; p++){
+      for (let i = 0; i < 40; i++) {
+        const meteorite = new THREE.Mesh(meteoriteGeometry, meteoriteMaterial);
+        meteorite.position.set(
+          Math.random() * 200 - 100,
+          Math.random() * 200 - 100,
+          Math.random() * -500 - 100
+        );
+        scene.add(meteorite);
+        meteorites.push(meteorite);
+      }
+    };
 
-          const particle = new THREE.Mesh(particleGeo,particleMaterial);
-          //posicionarla aleatoriamente en x y z 
-          particle.position.set(
-            Math.random() * 500 - 250, //x
-            Math.random() * 500 - 250, //y
-            Math.random() * 100 - 100, //z
-          )
-          //aleatoriamente en la escena
-          particle.rotation.z = Math.random() * 300
-          //añadimos la particula a la escena
-          scene.add(particle);
-          arrParticles.push(particle)
-        }
+    const createGalaxy = () => {
+      const galaxyGeometry = new THREE.BufferGeometry();
+      const galaxyVertices = [];
 
-      })
-      camera.position.z = 10;
-    }
+      for (let i = 0; i < 9000; i++) {
+        const x = Math.random() * 2000 - 1000;
+        const y = Math.random() * 2000 - 1000;
+        const z = Math.random() * 2000 - 1000;
+        galaxyVertices.push(x, y, z);
+      }
+
+      galaxyGeometry.setAttribute(
+        "position",
+        new THREE.Float32BufferAttribute(galaxyVertices, 3)
+      );
+
+      const galaxyMaterial = new THREE.PointsMaterial({
+        size: 1,
+        color: 0xffffff,
+        transparent: true,
+        opacity: 0.7,
+      });
+
+      galaxy = new THREE.Points(galaxyGeometry, galaxyMaterial);
+      scene.add(galaxy);
+    };
 
     const animate = () => {
       requestAnimationFrame(animate);
 
-      if (arrParticles) {
-       arrParticles.forEach(particle =>{
-        particle.rotation.z += 0.001
-       })
+      // Animar estrellas
+      if (stars) {
+        stars.forEach((star) => {
+          star.position.z += 0.5;
+          if (star.position.z > 1000) {
+            star.position.z = -1000;
+          }
+        });
       }
+
+      // Mover meteoritos
+      if (meteorites) {
+        meteorites.forEach((meteorite) => {
+          meteorite.position.z += 1.1;
+          if (meteorite.position.z > 100) {
+            meteorite.position.z = Math.random() * -500 - 100;
+          }
+        });
+      }
+
+      // Renderizar escena
       if (renderer && scene && camera) {
-        // Verifica si existen antes de renderizar.
         renderer.render(scene, camera);
       }
     };
 
     const handleResize = () => {
-      // Función para redimensionar el canvas
       if (camera && renderer) {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
       }
     };
+
     init();
     animate();
 
-    window.addEventListener("resize", handleResize); // Listener para el evento resize
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize); // Limpieza del listener
+      window.removeEventListener("resize", handleResize);
       if (mountRef.current) {
         mountRef.current.removeChild(renderer.domElement);
       }
-      // Elimina las variables de Three.js
       scene = null;
       camera = null;
       renderer = null;
-      // cube = null;
-      arrParticles = null;
+      stars = null;
+      meteorites = null;
+      galaxy = null;
     };
   }, []);
 
-  return <div ref={mountRef} className="fixed top-0 h-screen w-screen" />; // Usa useRef y h-screen/w-screen
+  return <div ref={mountRef} className="fixed top-0 h-screen w-screen" />;
 };
 
-export default Fondo;
+export default SpaceScene;

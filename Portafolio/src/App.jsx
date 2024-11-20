@@ -9,10 +9,7 @@ function App() {
         {" "}
         {/* Div para posicionar el contenido encima */}
         <p className="text-white z-10">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur
-          mollitia aperiam amet, officiis nulla saepe doloribus error voluptatum
-          quae! Repellendus aperiam sunt ab magni. Dolores sed vitae asperiores
-          obcaecati voluptas.
+          Portafolio
         </p>
       </div>
     </div>
