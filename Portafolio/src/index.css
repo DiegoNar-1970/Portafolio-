@@ -4,9 +4,71 @@
 
 :root {
   padding: 0px;
-  margin:0px;
+  margin: 0px;
   box-sizing: border-box;
-  /* color-scheme: light dark; */
-
+  font-family: 'SredaT';
+  color-scheme: light dark;
+}
+//va ganando
+@font-face {
+  font-family: "yatraOne";
+  src: url("../public/fonts/YatraOne-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Sreda";
+  src: url("../public/fonts/Sreda/Sreda-Regular.otf") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SredaT";
+  src: url("../public/fonts/Sreda/Sreda-Regular.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "skyscapers";
+  src: url("../public/fonts/Skyscapers.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "kaushan";
+  src: url("../public/fonts/KaushanScript-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
+.loader {
+  width: 15px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: l5 1s infinite linear alternate;
+  margin: auto;
+  margin-top: 20vh;
+}
+@keyframes l5 {
+  0% {
+    box-shadow: 20px 0 #000, -20px 0 #0002;
+    background: #000;
+  }
+  33% {
+    box-shadow: 20px 0 #000, -20px 0 #0002;
+    background: #0002;
+  }
+  66% {
+    box-shadow: 20px 0 #0002, -20px 0 #000;
+    background: #0002;
+  }
+  100% {
+    box-shadow: 20px 0 #0002, -20px 0 #000;
+    background: #000;
+  }
+}

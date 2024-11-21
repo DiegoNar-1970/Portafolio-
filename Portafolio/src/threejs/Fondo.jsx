@@ -119,7 +119,7 @@ const SpaceScene = () => {
       // Mover meteoritos
       if (meteorites) {
         meteorites.forEach((meteorite) => {
-          meteorite.position.z += 1.1;
+          meteorite.position.z += .7;
           if (meteorite.position.z > 100) {
             meteorite.position.z = Math.random() * -500 - 100;
           }
@@ -148,7 +148,7 @@ const SpaceScene = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
       if (mountRef.current) {
-        mountRef.current.removeChild(renderer.domElement);
+        mountRef.current.removeChild(renderer.domElement); 
       }
       scene = null;
       camera = null;
@@ -159,7 +159,10 @@ const SpaceScene = () => {
     };
   }, []);
 
-  return <div ref={mountRef} className="fixed top-0 h-screen w-screen" />;
+  
+
+  return <div ref={mountRef} className="fixed top-0 h-screen w-screen -z-10"  />;
+
 };
 
 export default SpaceScene;
