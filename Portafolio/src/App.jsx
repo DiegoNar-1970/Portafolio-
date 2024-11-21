@@ -5,7 +5,6 @@ import Footer from "./components/Footer";
 import Img from "./components/imgComponent/Img";
 import Menu from "./menu/menu";
 import { About, Contac, Home } from "./routes/lazyImports";
-
 function App() {
   return (
     <>

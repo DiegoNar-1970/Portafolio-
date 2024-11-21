@@ -9,7 +9,7 @@
   font-family: 'SredaT';
   color-scheme: light dark;
 }
-//va ganando
+
 @font-face {
   font-family: "yatraOne";
   src: url("../public/fonts/YatraOne-Regular.ttf") format("truetype");

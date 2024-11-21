@@ -1,0 +1,12 @@
+@keyframes bounce {
+    0%, 100% {
+      transform: translateY(0); /* Posición inicial y final */
+    }
+    50% {
+      transform: translateY(-10px); /* Rebote hacia arriba */
+    }
+  }
+  
+  .bounce {
+    animation: bounce 2s ease-in-out infinite;
+  }
