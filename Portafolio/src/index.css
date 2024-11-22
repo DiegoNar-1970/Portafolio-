@@ -2,11 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-  font-family: 'SredaT';
+  font-family: 'Sreda';
   color-scheme: light dark;
 }
 
