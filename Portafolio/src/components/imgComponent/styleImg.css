@@ -1,14 +1,97 @@
+.typing {
+  display: block;
+  white-space: nowrap;
+  border-right: 2px solid;
+  width: 0;
+  animation: typingEfect 3s steps(30) .5s forwards, blink 0.5s infinite step-end alternate;
+  overflow: hidden;
+}
+
+@keyframes typingEfect {
+  from {
+    width: 0;
+  }
+  to {
+    width: 30ch;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
 
 
-.awebo {
-    cursor: pointer; /* Indicador visual de que se puede hacer clic */
+
+.move-half {
+  animation: pulse-half 2s forwards; 
+}
+
+.move-back {
+  animation: pulse-back 2s forwards; 
+}
+
+@keyframes pulse-half {
+  0% {
+    transform: translate(0%); 
+    scale:1;
+  }
+  50%, 100% { 
+    transform: translate(-30%,35%); 
+    scale:2;
   }
   
-  .awebo.expanded {
-    width: 50%;
-    height: 50vh; /* 50% de la altura de la ventana */
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centrar en la pantalla */
+}
+
+@keyframes pulse-back {
+  0% {
+    transform: translate(-40%,40%); 
+    scale:2;
   }
+  100% {
+    transform: translate(0%); 
+    scale:1;
+  }
+}
+
+.buttn {
+  background: black;
+  cursor: pointer;
+  border: none;
+  padding: 1px;
+  color: azure;
+  font-size: 15px;
+  background: transparent;
+  font-weight: bold;
+  position: relative;
+  border-radius: 12px;
+}
+
+.buttn:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -100;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgb(134, 14, 253), blue, rgba(250, 1, 1, 0.967), blue, rgb(93, 0, 255), blue, deeppink, blue);
+  background-size: 800%;
+  border-radius: 1px;
+  filter: blur(8px);
+  animation: glowing 20s linear infinite;
+}
+
+@keyframes glowing {
+  0% {
+      background-position: 0 0;
+  }
+  50% {
+      background-position: 400% 0;
+  }
+  100% {
+      background-position: 0 0;
+  }
+}
+

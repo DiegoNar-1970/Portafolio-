@@ -2,14 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-  font-family: 'SredaT';
+  font-family: 'Sreda';
   color-scheme: light dark;
 }
-//va ganando
+
 @font-face {
   font-family: "yatraOne";
   src: url("../public/fonts/YatraOne-Regular.ttf") format("truetype");
