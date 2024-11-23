@@ -1,3 +1,5 @@
+/*este estilo es para el efecto de escritura*/
+
 .typing {
   display: block;
   white-space: nowrap;
@@ -6,7 +8,6 @@
   animation: typingEfect 3s steps(30) .5s forwards, blink 0.5s infinite step-end alternate;
   overflow: hidden;
 }
-
 @keyframes typingEfect {
   from {
     width: 0;
@@ -24,6 +25,8 @@
 
 
 
+
+/*esta es la clase para el efecto de mi imagen*/
 .move-half {
   animation: pulse-half 2s forwards; 
 }
@@ -54,7 +57,7 @@
     scale:1;
   }
 }
-
+/*este estilo es para que el boton scale infinitamente*/
 .buttn {
   background: black;
   cursor: pointer;
@@ -95,3 +98,46 @@
   }
 }
 
+/*este efecto es para el alrederor de componente o lo que sea*/
+.tarjeta{
+  margin-top: 20px;
+  height: 40px;
+  width: 170px;
+  background-color: #101010;
+  border-radius: 10%;
+  box-shadow: 16px 14px 20px #0000008c;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tarjeta::before{
+  content: "";
+  position: absolute;
+  height: 300px;
+  width: 300px;
+  background-image: conic-gradient(rgba(157, 0, 255, 0.308) 10deg, transparent 110deg);
+  animation: rotar 2s linear infinite;
+  border-radius: 10%;
+}
+
+@keyframes rotar{
+  from{
+      transform: rotate(0deg);
+  }
+  to{
+      transform: rotate(-360deg);
+  }
+}
+
+.tarjeta::after{
+  content: "";
+  position: absolute;
+  height: 37px;
+  width: 165px;
+  background-color: #101010;
+  border-radius: 10%;
+  box-shadow: inset 16px 14px 20px #0000008c;;
+}

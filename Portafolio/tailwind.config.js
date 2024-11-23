@@ -18,6 +18,12 @@ export default {
         fondo: '#323f5451',
         hover: '#a395e0'
       },
+      fontFamily:{
+        robot:'roboto-thin',
+        robotRegular:'roboto-regular-400',
+        robotMedium:'roboto-medium-500',
+        robotBlod:'roboto-blod-700',
+      }
     },
   },
   plugins: [animations],

@@ -5,11 +5,11 @@ import Footer from "./components/Footer";
 import Img from "./components/imgComponent/Img";
 import Menu from "./menu/menu";
 import { About, Contac, Home } from "./routes/lazyImports";
-import Fondo from './threejs/Fondo';
+// import Fondo from './threejs/Fondo';
 function App() {
   return (
     <>
-      <Fondo />
+      {/* <Fondo /> */}
       <div className="fixed top-0 left-0 w-full h-full overflow-auto srcoll_personal">
         <article className="flex flex-col p-3">
           <Menu />
