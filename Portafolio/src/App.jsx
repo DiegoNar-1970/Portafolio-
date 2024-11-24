@@ -9,7 +9,6 @@ import { About, Contac, Home } from "./routes/lazyImports";
 function App() {
   return (
     <>
-    
       {/* <Fondo /> */}
       <div className="fixed top-0 left-0 w-full h-full overflow-auto srcoll_personal">
         <article className="flex flex-col p-3">
