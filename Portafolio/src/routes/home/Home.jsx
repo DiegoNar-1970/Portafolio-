@@ -1,3 +1,4 @@
+import PcRender from '../../threejs/PcRender'
 import './homeStile.css'
 
 const Home = () => {
@@ -31,10 +32,13 @@ const Home = () => {
             src="../../../public/img/coding.gif" alt="" />
           </picture>
           <article className='form'>
-            <section className="bg-white">
-1 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae, provident praesentium! Nulla voluptates fugit, est nesciunt nemo obcaecati odit repellat, vero doloribus cumque excepturi veritatis. Repellat nobis commodi cupiditate omnis!
+            <section className="relative p-[9px] bg-gray-700 outline outline-[1px] outline-border rounded-[1em] ">  
+
+
+              <PcRender />
+              <h2 className=' w-[200px] absolute bottom-[100px] bg-[]'> hola </h2>
             </section>
-            <section className="bg-red-950">
+            <section className="bg-red-950 p-[10px]">
         2 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae, provident praesentium! Nulla voluptates fugit, est nesciunt nemo obcaecati odit repellat, vero doloribus cumque excepturi veritatis. Repellat nobis commodi cupiditate omnis!
             </section>
             <section className="bg-gray-300">
