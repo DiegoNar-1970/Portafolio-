@@ -1,4 +1,4 @@
-import PcRender from '../../threejs/PcRender'
+// import PcRender from '../../threejs/PcRender'
 import './homeStile.css'
 
 const Home = () => {
@@ -31,15 +31,14 @@ const Home = () => {
             <img className='absolute object-contain top-0 left-0 w-full h-full '
             src="../../../public/img/coding.gif" alt="" />
           </picture>
-          <article className='form'>
-            <section className="relative p-[9px] bg-gray-700 outline outline-[1px] outline-border rounded-[1em] ">  
-
-
-              <PcRender />
-              <h2 className=' w-[200px] absolute bottom-[100px] bg-[]'> hola </h2>
+          <article className='form '>
+            <section className=" relative flex flex-col min-h-[200px] duration-1000   rounded-[1em] me">  
+              {/* <PcRender /> */}
+              <h1 className='mt-[20px] '> relative</h1>
+              <p className='text-[22px]  '>I adapt to the designs you would like to have on your website using best practices for scalable and maintainable code </p>
             </section>
-            <section className="bg-red-950 p-[10px]">
-        2 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae, provident praesentium! Nulla voluptates fugit, est nesciunt nemo obcaecati odit repellat, vero doloribus cumque excepturi veritatis. Repellat nobis commodi cupiditate omnis!
+            <section className=" bg-[#282a2c] outline outline-[1px] outline-[#6b6c6d88] rounded-[1em]">
+        2 Lorem ipsum dolor sit amet consectetur, adipisicing eli t. Molestiae, provident praesentium! Nulla voluptates fugit, est nesciunt nemo obcaecati odit repellat, vero doloribus cumque excepturi veritatis. Repellat nobis commodi cupiditate omnis!
             </section>
             <section className="bg-gray-300">
             3 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae, provident praesentium! Nulla voluptates fugit, est nesciunt nemo obcaecati odit repellat, vero doloribus cumque excepturi veritatis. Repellat nobis commodi cupiditate omnis!
@@ -53,6 +52,22 @@ const Home = () => {
             <section className="bg-slate-800">
               6 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae, provident praesentium! Nulla voluptates fugit, est nesciunt nemo obcaecati odit repellat, vero doloribus cumque excepturi veritatis. Repellat nobis commodi cupiditate omnis!
             </section>
+          </article>
+          <article className='flex flex-wrap flex-col mt-[-350px] items-center justify-center p-[140px]'>
+            <h1>Show my recents works</h1>
+            <div className='flex flex-wrap gap-4'>
+              <section className='flex flex-col bg-blue-500  max-w-[550px] '>
+                    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum iusto deserunt ullam, minus error cupiditate ipsa quis explicabo maiores assumenda aliquam incidunt quaerat. At nemo, alias officia obcaecati iste cupiditate?</h2>
+              </section>
+              <section className='flex flex-col bg-blue-500  max-w-[550px] '>
+                    <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi voluptas cupiditate distinctio accusamus, quae atque! Officiis quas magnam vitae magni, quod adipisci commodi quisquam, culpa eligendi quos repellendus hic. Quam.</h2>
+              </section>
+              <section className='flex flex-col bg-blue-500  max-w-[700px] '>
+
+
+                      <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa placeat dicta iusto saepe iste perferendis nemo id laudantium ut modi vitae vel eveniet natus fuga, non qui odio molestias fugiat?</h2>
+              </section>
+            </div>
           </article>
         </div>
         <div>

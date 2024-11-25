@@ -7,10 +7,9 @@ const PcRender = () => {
   const mountRef = useRef();
 
   useEffect(() => {
-    let scene, camera, renderer, orbit, gltfLoader, modelAdded = false;
+    let scene, camera, renderer, orbit, gltfLoader;
 
     const init = () => {
-     
       // Crear la escena
       scene = new THREE.Scene();
 
@@ -21,101 +20,104 @@ const PcRender = () => {
       }
       const { clientWidth, clientHeight } = container;
 
-      camera = new THREE.PerspectiveCamera(12, clientWidth / clientHeight, 0.1, 100);
-      camera.position.set(1, 1, 1 ); // Ajustar posición inicial de la cámara
+      camera = new THREE.PerspectiveCamera(50, clientWidth / clientHeight, 0.1, 200);
+      camera.position.set(-1, 5.5, 2);
 
       // Configurar el renderizador
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setSize(clientWidth, clientHeight);
       renderer.setPixelRatio(window.devicePixelRatio);
-      renderer.setClearColor(0x51323f54, 1); // Color de fondo de la escena
-      container.appendChild(renderer.domElement); // Añadir el canvas al DOM
+      renderer.setClearColor(0x000000, 1); // Fondo negro
+      renderer.toneMapping = THREE.ReinhardToneMapping;
+      renderer.toneMappingExposure = 1.5; // Ajusta la exposición
+      container.appendChild(renderer.domElement);
 
-      // Añadir luces a la escena
+      // Luces
       const ambientLight = new THREE.AmbientLight(0x404040, 1.5);
       scene.add(ambientLight);
 
-      const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-      directionalLight.position.set(5, 10, 7.5);
-      scene.add(directionalLight);
+      const centralLight = new THREE.PointLight(0xffffff, 2, 2000);
+      centralLight.position.set(0, 5, 0);
+      scene.add(centralLight);
 
-      // Configurar los OrbitControls
+      // OrbitControls
       orbit = new OrbitControls(camera, renderer.domElement);
       orbit.enableDamping = true;
       orbit.dampingFactor = 0.05;
 
       // Cargar el modelo GLTF
       gltfLoader = new GLTFLoader();
-      const textureLoader = new THREE.TextureLoader();
-      const keyboardTexture = textureLoader.load(
-        "../../public/models_3d/laptop/textures/Keyboard_baseColor.jpeg"
-      );
-      const logoTexture = textureLoader.load(
-        "../../public/models_3d/laptop/textures/Metal_logo_baseColor.png"
-      );
-      const screenTexture = textureLoader.load(
-        "../../public/models_3d/laptop/textures/screen_baseColor.jpeg"
-      );
-  
-      gltfLoader.load("../../public/models_3d/laptop/scene.gltf", (gltf) => { 
-        if(!modelAdded){
-          modelAdded = true;
-          gltf.scene.traverse((child) => {
-            if (child.isMesh) {
-              // Aquí podrías usar child.name para identificar partes específicas del modelo
-              if (child.name === "Keyboard") {
-                child.material = new THREE.MeshStandardMaterial({ map: keyboardTexture });
-              } else if (child.name === "Logo") {
-                child.material = new THREE.MeshStandardMaterial({ map: logoTexture });
-              } else if (child.name === "Screen") {
-                child.material = new THREE.MeshStandardMaterial({ map: screenTexture });
-              }
-            }
-          });
-          scene.add(gltf.scene);
-        } 
-        return;
+      gltfLoader.load("../../public/models_3d/space2/scene.gltf", (gltf) => {
+        const model = gltf.scene;
+        model.position.set(0, 0, 0);
+
+
+        scene.add(model);
       });
 
-      // Iniciar el ciclo de animación
+      // Iniciar la animación
+      const animate = () => {
+        requestAnimationFrame(animate);
+        orbit.update();
+        renderer.render(scene, camera);
+      };
+
       animate();
-    };
 
-    const animate = () => {
-      requestAnimationFrame(animate);
-      orbit.update();
-      renderer.render(scene, camera);
-    };
+      // Actualizar tamaño al redimensionar
+      const onResize = () => {
+        if (container) {
+          const { clientWidth, clientHeight } = container;
+          camera.aspect = clientWidth / clientHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(clientWidth, clientHeight);
+        }
+      };
 
-    const onResize = () => {
-      // Actualizar la cámara y el renderizador en caso de redimensionar
-      const container = mountRef.current;
-      if (container) {
-        const { clientWidth, clientHeight } = container;
-        camera.aspect = clientWidth / clientHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(clientWidth, clientHeight);
-      }
+      window.addEventListener("resize", onResize);
+
+      return () => {
+        // Cleanup
+        window.removeEventListener("resize", onResize);
+        renderer.dispose();
+      };
     };
 
     init();
-    window.addEventListener("resize", onResize);
-
-    return () => {
-      // Cleanup: eliminar el canvas y eventos
-      window.removeEventListener("resize", onResize);
-      renderer.dispose();
-      modelAdded= false
-    };
   }, []);
 
   return (
     <div
       ref={mountRef}
-      className="top-0 end-0 w-[370px] h-[350px] sm:w-[360px] sm:h-[350px] transition-all duration-1000 
-      md:w-[500px] md:h-[400px] overflow-hidden rounded-[1em]"
+      className="top-0 end-0 w-[490px] h-[320px] sm:w-[440px] sm:h-[320px] 
+      md:w-[600px] md:h-[370px] overflow-hidden rounded-[1em]"
     ></div>
   );
 };
 
 export default PcRender;
+
+
+
+// const textureLoader = new THREE.TextureLoader();
+// const keyboardTexture = textureLoader.load(
+//   "../../public/models_3d/laptop/textures/Keyboard_baseColor.jpeg"
+// );
+// const logoTexture = textureLoader.load(
+//   "../../public/models_3d/laptop/textures/Metal_logo_baseColor.png"
+// );
+// const screenTexture = textureLoader.load(
+//   "../../public/models_3d/laptop/textures/screen_baseColor.jpeg"
+// );
+// if (child.isMesh) {
+//   // Aquí podrías usar child.name para identificar partes específicas del modelo
+//   if (child.name === "Keyboard") {
+//     child.material = new THREE.MeshStandardMaterial({ map: keyboardTexture });
+//   } else if (child.name === "Logo") {
+//     child.material = new THREE.MeshStandardMaterial({ map: logoTexture });
+//   } else if (child.name === "Screen") {
+//     child.material = new THREE.MeshStandardMaterial({ map: screenTexture });
+//   }
+// }
+// top-0 end-0 w-[490px] h-[320px] sm:w-[440px] sm:h-[320px] duration-1000 
+//       md:w-[600px] md:h-[370px] overflow-hidden rounded-[1em]
