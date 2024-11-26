@@ -31,28 +31,47 @@ const Home = () => {
             <img className='absolute object-contain top-0 left-0 w-full h-full '
             src="../../../public/img/coding.gif" alt="" />
           </picture>
-          <article className='form '>
-            <section className=" relative flex flex-col min-h-[200px] duration-1000   rounded-[1em] me">  
+          <section className='form '>
+            <article className=" flex flex-col min-h-[200px] justify-end  duration-1000 rounded-[1em] me p-3">  
               {/* <PcRender /> */}
-              <h1 className='mt-[20px] '> relative</h1>
-              <p className='text-[22px]  '>I adapt to the designs you would like to have on your website using best practices for scalable and maintainable code </p>
-            </section>
-            <section className=" bg-[#282a2c] outline outline-[1px] outline-[#6b6c6d88] rounded-[1em]">
-        2 Lorem ipsum dolor sit amet consectetur, adipisicing eli t. Molestiae, provident praesentium! Nulla voluptates fugit, est nesciunt nemo obcaecati odit repellat, vero doloribus cumque excepturi veritatis. Repellat nobis commodi cupiditate omnis!
-            </section>
-            <section className="bg-gray-300">
-            3 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae, provident praesentium! Nulla voluptates fugit, est nesciunt nemo obcaecati odit repellat, vero doloribus cumque excepturi veritatis. Repellat nobis commodi cupiditate omnis!
-            </section>
-            <section className="bg-yellow-500">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae, provident praesentium! Nulla voluptates fugit, est nesciunt nemo obcaecati odit repellat, vero doloribus cumque excepturi veritatis. Repellat nobis commodi cupiditate omnis!
-            </section>
-            <section className="bg-purple-400">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, explicabo quaerat. Doloremque quo voluptatem tempora ratione iusto est quod repellat dolorum repellendus totam, praesentium iure repudiandae illum nemo vel aliquam.
-            </section>
-            <section className="bg-slate-800">
-              6 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae, provident praesentium! Nulla voluptates fugit, est nesciunt nemo obcaecati odit repellat, vero doloribus cumque excepturi veritatis. Repellat nobis commodi cupiditate omnis!
-            </section>
-          </article>
+              <div className='flex gap-1'>
+                <h1 className='mt-[20px] text-[25px] max-w-[50%] '>A little</h1>
+                <h1 className='mt-[20px] text-[25px] max-w-[50%] text-[#9480ee]'>About me</h1>
+              </div>
+              <p className='text-[19px] font-robot max-w-[75%] '>
+                I am a full stack developer with experience in technologies like react, I am good at express js or Spring boot, my main language is javascript and I always try to improve as a programmer, I always give my best, I am always doing projects
+              </p>
+            </article>
+            <article className=" bg-[#381d54]  rounded-[1em] flex flex-col justify-center items-center min-h-[190px] max-h-[190px]">
+              <span className='text-[80px]'>EN</span>
+              <div className='flex gap-[5px] mt-[-28px]'>
+                <span>EN</span>  
+                <span>ES</span>  
+              </div>
+            </article>
+            <article className=" bg-[#381d54] max-h-[190px] min-h-[190px] rounded-[1em] flex flex-col justify-center items-center">
+                <h2 className='text-[12px] font-robotMedium mb-[-25px]'>Nivel de ingles</h2>
+                <span className='text-[80px]'>B2</span>
+            </article>
+            <article className="ardilla ">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi dolorem tempora consequuntur illum hic? Sequi, nulla cum facilis eum quam ducimus veritatis rem eos ut recusandae, ipsa vitae consectetur porro.
+            </article>
+            <article className="bg-purple-400">
+                  5
+            </article>
+            <article className="bg-blue-500">
+              6 L
+            </article>
+            <article className="bg-slate-800">
+              7 L
+            </article>
+            <article className="bg-slate-800">
+              8L
+            </article>
+            <article className="bg-slate-800">
+              9L
+            </article>
+          </section>
           <article className='flex flex-wrap flex-col mt-[-350px] items-center justify-center p-[140px]'>
             <h1>Show my recents works</h1>
             <div className='flex flex-wrap gap-4'>
