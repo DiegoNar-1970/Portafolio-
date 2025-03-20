@@ -7,45 +7,45 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
-  font-family: 'Sreda';
+  font-family: 'roboto-blod-700';
   color-scheme: light dark;
 }
+@font-face {
+  font-family: "roboto-Ligth-300";
+  src: url("../public/fonts/Roboto-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "roboto-blod-700";
+  src: url("../public/fonts/Roboto-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "roboto-medium-500";
+  src: url("../public/fonts/Roboto-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "roboto-regular-400";
+  src: url("../public/fonts/Roboto-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "roboto-thin";
+  src: url("../public/fonts/Roboto-Thin.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
 
-@font-face {
-  font-family: "yatraOne";
-  src: url("../public/fonts/YatraOne-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Sreda";
-  src: url("../public/fonts/Sreda/Sreda-Regular.otf") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "SredaT";
-  src: url("../public/fonts/Sreda/Sreda-Regular.ttf") format("truetype");
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "skyscapers";
-  src: url("../public/fonts/Skyscapers.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "kaushan";
-  src: url("../public/fonts/KaushanScript-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
 
 .loader {
   width: 15px;
