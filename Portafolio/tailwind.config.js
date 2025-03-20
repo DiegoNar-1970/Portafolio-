@@ -23,6 +23,7 @@ export default {
         robotRegular:'roboto-regular-400',
         robotMedium:'roboto-medium-500',
         robotBlod:'roboto-blod-700',
+        robotLigth:'roboto-Ligth-300',
       }
     },
   },

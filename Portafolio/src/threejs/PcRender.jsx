@@ -47,7 +47,7 @@ const PcRender = () => {
 
       // Cargar el modelo GLTF
       gltfLoader = new GLTFLoader();
-      gltfLoader.load("../../public/models_3d/space2/scene.gltf", (gltf) => {
+      gltfLoader.load("0models_3d/space2/scene.gltf", (gltf) => {
         const model = gltf.scene;
         model.position.set(0, 0, 0);
 

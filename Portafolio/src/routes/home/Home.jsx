@@ -1,12 +1,21 @@
 // import PcRender from '../../threejs/PcRender'
-import './homeStile.css'
+import { FaAngular, FaExternalLinkAlt, FaHtml5, FaNodeJs, FaPython, FaReact } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
+import { GrMysql } from "react-icons/gr";
+import { IoLogoJavascript } from "react-icons/io";
+import { RiTailwindCssFill } from "react-icons/ri";
+import { SiExpress, SiGraphql, SiMongodb, SiSpring } from "react-icons/si";
+
+
+import InfiniteScroll from "../../components/infiniteScroll/InfiniteScroll";
+import './homeStile.css';
 
 const Home = () => {
   return (
-    <section className='text-white p-2  mt-[105px] flex flex-col '>
-        <div className="flex flex-col items-center gap-2">
+    <section className='text-white p-2  mt-[150px] flex flex-col gap-[120px]'>
+        <div className="flex flex-col items-center gap-[1em]">
           <span className="typing text-[15px] font-robotRegular ">If you can imagine it, you can create it</span>
-          <div className="flex gap-[13px] flex-wrap max-w-[770px] text-[40px] ">
+          <div className="flex gap-[13px] flex-wrap max-w-[770px] text-[35px] ">
             <span className="text-[#9480ee]">Transforming</span>
             <span>ideas</span>
             <span>into</span>
@@ -21,54 +30,77 @@ const Home = () => {
           <span className='font-robot text-[22px]'>
             !Hi i&apos;m Diego a Full stack computer engineer, i live in  Colombia
           </span>
-          <div className="tarjeta "> 
+          {/* <div className="tarjeta "> 
             <button 
             className='relative z-10 '>
               Show my works
           </button>
-          </div>
-          <picture className='relative w-[300px] h-[200px] overflow-hidden mt-10 rounded-[2em]'>
-            <img className='absolute object-contain top-0 left-0 w-full h-full '
-            src="../../../public/img/coding.gif" alt="" />
-          </picture>
-          <section className='form '>
-            <article className=" flex flex-col min-h-[200px] justify-end  duration-1000 rounded-[1em] me p-3">  
+          </div> */}
+        </div>
+        <section className='form '>
+            <article className=" flex flex-col min-h-[200px] justify-end  duration-1000 rounded-[1em] me  p-3">  
+              
               {/* <PcRender /> */}
               <div className='flex gap-1'>
                 <h1 className='mt-[20px] text-[25px] max-w-[50%] '>A little</h1>
                 <h1 className='mt-[20px] text-[25px] max-w-[50%] text-[#9480ee]'>About me</h1>
               </div>
-              <p className='text-[19px] font-robot max-w-[75%] '>
-                I am a full stack developer with experience in technologies like react, I am good at express js or Spring boot, my main language is javascript and I always try to improve as a programmer, I always give my best, I am always doing projects
-              </p>
+              <div className='text-[19px] font-robotRegular  max-w-[75%] '>
+                <p>I am a FullStack Developer with experience in technologies like react, I am good at express js or Spring boot, my main language is javascript and I always try to improve as a programmer, I always give my best, I am always doing projects  </p>
+              </div>
             </article>
-            <article className=" bg-[#381d54]  rounded-[1em] flex flex-col justify-center items-center min-h-[190px] max-h-[190px]">
+            <article className=" bg-[#381d54]  rounded-[1em] flex flex-col justify-center items-center min-h-[190px] max-h-[190px] opacity-[0.9] relative">
+                <div className="absolute inset-0 bg-image rounded-[1em]  z-[-10]"></div>
               <span className='text-[80px]'>EN</span>
               <div className='flex gap-[5px] mt-[-28px]'>
                 <span>EN</span>  
                 <span>ES</span>  
               </div>
             </article>
-            <article className=" bg-[#381d54] max-h-[190px] min-h-[190px] rounded-[1em] flex flex-col justify-center items-center">
+            <article className=" bg-[#381d54] max-h-[190px] min-h-[190px] rounded-[1em] flex flex-col justify-center items-center opacity-[0.9] relative">
                 <h2 className='text-[12px] font-robotMedium mb-[-25px]'>Nivel de ingles</h2>
+                <div className="absolute inset-0 bg-image rounded-[1em]  z-[-10]"></div>
                 <span className='text-[80px]'>B2</span>
             </article>
-            <article className="ardilla ">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi dolorem tempora consequuntur illum hic? Sequi, nulla cum facilis eum quam ducimus veritatis rem eos ut recusandae, ipsa vitae consectetur porro.
+            <article className="ardilla p-3 rounded-[1em] h-[200px]">
+              <div className="absolute inset-0 bg-image rounded-[1em]  z-[-10] "></div>
+              <FaGithub className="z-[10] absolute text-[27px]"/>
+              <FaExternalLinkAlt className="z-[10] absolute text-[17px] right-2 "/>
+              <div className="bottom-2 z-[10] text-[15px] absolute">
+                <h3 className="text-[25px]">GitHub</h3>
+                <span className="  font-robotRegular ">
+                  This is my work position, where I upload all the projects I am doing and part of my education.
+                </span>
+              </div>
             </article>
-            <article className="bg-purple-400">
-                  5
+            <article className="bg-[#ac8a70] flex flex-wrap gap-3 justify-center items-center rounded-[1em] p-2 ">
+              <IoLogoJavascript  className="text-[35px]" />
+              <FaReact className="text-[35px]" />
+              <FaHtml5 className="text-[35px]"  />
+              <SiExpress className="text-[35px]"  />
+              <GrMysql className="text-[35px]"  />
+              <SiGraphql className="text-[35px]"/>
+              <RiTailwindCssFill className="text-[35px]" />
+              <SiMongodb  className="text-[35px]"  />
+              <FaAngular className="text-[35px]"  />
+              <FaNodeJs className="text-[35px]"  />
+              <SiSpring className="text-[35px]"  />
+              <FaPython className="text-[35px]"  />
             </article>
-            <article className="bg-blue-500">
-              6 L
-            </article>
-            <article className="bg-slate-800">
-              7 L
+            <div className="relative rounded-[1em] bg-red-500 opacity-[0.9] p-4 flex flex-col justify-center items-center">
+              <h3 className="mb-[-35px] text-[17px] font-robot">Age</h3>
+              <span className="text-[100px]">21</span>
+              <span className="mt-[-25px] text-[17px] font-robot">Years Old</span>
+            </div>
+            <article className="bg-blue-950 rounded-[1em] flex items-center justify-center opacity-[0.9] relative"  >
+              <div className="absolute inset-0 bg-image rounded-[1em]  z-[-10]"></div>
+              
+              <FaLinkedinIn className="text-[100px]"/>
             </article>
             <article className="bg-slate-800">
               8L
             </article>
-            <article className="bg-slate-800">
+            <article className="bg-slate-800 programing">
               9L
             </article>
           </section>
@@ -88,10 +120,9 @@ const Home = () => {
               </section>
             </div>
           </article>
-        </div>
-        <div>
-
-        </div>
+          <article>
+            <InfiniteScroll/>
+          </article>
     </section>
   )
 }

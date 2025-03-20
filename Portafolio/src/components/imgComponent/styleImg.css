@@ -105,7 +105,7 @@
   width: 170px;
   background-color: #101010;
   border-radius: 10%;
-  box-shadow: 16px 14px 20px #0000008c;
+  box-shadow: 1px 1cap 20px #1e1d1d8c;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -118,7 +118,7 @@
   position: absolute;
   height: 300px;
   width: 300px;
-  background-image: conic-gradient(rgba(157, 0, 255, 0.308) 10deg, transparent 110deg);
+  background-image: conic-gradient(rgba(157, 0, 255, 0.658) 10deg, transparent 110deg);
   animation: rotar 2s linear infinite;
   border-radius: 10%;
 }
