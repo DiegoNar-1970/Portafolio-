@@ -24,7 +24,10 @@ const SpaceScene = () => {
       //creamos un render de color negro para simular el espacio
       renderer.setClearColor(0x000000, 1); 
       // debemos escoger el elemento Dom 
-      mountRef.current.appendChild(renderer.domElement);
+      if (mountRef.current) {  // Asegúrate de que mountRef.current esté definido
+          mountRef.current.appendChild(renderer.domElement);
+      }
+
 
       // para generar la luz podemos usar el helper para saber donde esta la camara y asi es mas facil posiconarla
       const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -145,10 +148,13 @@ const SpaceScene = () => {
 
     window.addEventListener("resize", handleResize);
 
+    // Copia la referencia a una variable dentro del efecto
+    const currentMountRef = mountRef.current;
+
     return () => {
       window.removeEventListener("resize", handleResize);
-      if (mountRef.current) {
-        mountRef.current.removeChild(renderer.domElement); 
+      if (currentMountRef && renderer && renderer.domElement) { //Verifica que currentMountRef sea valido y tambien renderer y renderer.domElement
+        currentMountRef.removeChild(renderer.domElement);
       }
       scene = null;
       camera = null;
@@ -158,8 +164,6 @@ const SpaceScene = () => {
       galaxy = null;
     };
   }, []);
-
-  
 
   return <div ref={mountRef} className="fixed top-0 h-screen w-screen -z-10"  />;
 
